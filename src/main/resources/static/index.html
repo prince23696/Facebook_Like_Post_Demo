@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Home Page</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="home.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <meta charset="utf-8">
+</head>
+<body bgcolor="#eeeeee">
+<p style="margin-top: 1em">
+    <font size="5" face="sans-serif">
+        <marquee>Welcome to the Portal for DemoFacebook</marquee>
+    </font></p>
+<nav>
+    <div class="nav-wrapper  " style="background-color: teal">
+        <div class="container">
+
+            <a href="index.html" class="brand-logo"> Home</a>
+            <ul class="right hide-on-med-and-down" id="nav-mobile">
+                <li><a href="ContactUs.html">Contact us</a></li>
+                <li><a href="AboutUs.html">About us</a>
+                <li><a href="registerUser.html">Registration</a>
+                <li><a href="Help.html">Help!!</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<br>
+<br>
+<div class="container">
+    <div class="card">
+        <div class="container" class="row">
+            <form action="@{registration}" th:object="@{user}" method="post">
+                <div class="row">
+                    <br>
+                    <div align="Center">
+                        <h4 styleclass="header center">Enter Login Credentials</h4>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s10 offset-s1">
+                        <i class="material-icons prefix">contact_mail</i>
+                        <input name="email" type="email" class="validate" id="email" required>
+                        <label for="email">E-Mail</label>
+                        <span class="helper-text" data-error="Enter Email Address"></span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s10 offset-s1">
+                        <i class="material-icons prefix">lock</i>
+                        <input name="password" type="password" id="password" maxlength="20" minlength="8"
+                               class="validate" required>
+                        <label for="password">Password</label>
+                        <span class="helper-text" data-error="Enter Password"></span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col s7 offset-s1" onclick="check()">
+                        <button type="submit" class="btn red darken-4"
+                                class="btn waves-effect waves-red waves-ripple btn-small:hover" id='submit'
+                                name="signup">Login
+                        </button>
+                        <br> <br>
+                    </div>
+                </div>
+        </div>
+        </form>
+    </div>
+</div>
+</div>
+</body>
+</html>
