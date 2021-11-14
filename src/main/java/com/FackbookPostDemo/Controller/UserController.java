@@ -2,35 +2,68 @@ package com.FackbookPostDemo.Controller;
 
 import com.FackbookPostDemo.Entity.UserRegistrationForm;
 import com.FackbookPostDemo.Service.UserService;
+import com.FackbookPostDemo.dto.UserRegistrationDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.stereotype.Controller;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
-@RestController
+@Controller
 public class UserController {
 
     @Autowired
     UserService userService;
 
+/*
     @PostMapping("/saveUser")
-    public UserRegistrationForm saveUser(@Valid @ModelAttribute("user") UserRegistrationForm userRegistrationForm) {
-        ModelAndView modelAndView=new ModelAndView("user");
-        return userService.saveUser(userRegistrationForm);
-        modelAndView.addObject("list",userService)
+    public UserRegistrationForm saveUser(@Valid @RequestBody UserRegistrationDto userRegistrationDto) {
+        return userService.save(userRegistrationDto);
+    }
+*/
+    @GetMapping("/login")
+    public String login() {
+        return "login";
+    }
+
+    @GetMapping("/")
+    public String home() {
+        return "index";
+    }
+
+    /*
+        @PostMapping("/saveUser")
+        public UserRegistrationForm saveUser(@Valid @RequestBody UserRegistrationForm userRegistrationForm) {
+            return userService.saveUser(userRegistrationForm);
+        }
+
+        @GetMapping("/getAllUsers")
+        public List<UserRegistrationForm> getUsers() {
+            return userService.getAllUsers();
+        }
+
+    @PostMapping("/saveUser")
+    public ModelAndView saveUser(@Valid @ModelAttribute("user") UserRegistrationForm userRegistrationForm) {
+        ModelAndView mav = new ModelAndView("usersList");
+        userService.saveUser(userRegistrationForm);
+        List<UserRegistrationForm> userRegistrationFormList = userService.getAllUsers();
+        mav.addObject("list", userRegistrationFormList);
+        return mav;
     }
 
     @GetMapping("/getAllUsers")
-    public List<UserRegistrationForm> getUsers() {
-        return userService.getAllUsers();
+    public ModelAndView getUsers() {
+        ModelAndView mav = new ModelAndView("userList");
+        List<UserRegistrationForm> list = userService.getAllUsers();
+        mav.addObject("list", list);
+        return mav;
     }
+*/
 
     @GetMapping("/getUser/{id}")
     public UserRegistrationForm getUser(@PathVariable int id) {

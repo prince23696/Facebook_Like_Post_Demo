@@ -1,36 +1,24 @@
-package com.FackbookPostDemo.Entity;
+package com.FackbookPostDemo.dto;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-import org.hibernate.validator.constraints.UniqueElements;
-
-import javax.persistence.*;
-import javax.validation.constraints.Email;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import java.util.Date;
-import java.util.List;
 
-@Entity
-public class UserRegistrationForm {
+public class UserRegistrationDto {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String name;
-    @Email
     private String email;
     private String area;
     private String address;
-    private String  dob;
+    private String dob;
     private int phone;
     private String password;
-    @OneToMany(cascade = CascadeType.ALL)
-    @JsonManagedReference
-    private List<Post> posts;
 
-
-    public UserRegistrationForm() {
+    public UserRegistrationDto() {
     }
 
-    public UserRegistrationForm(int id, String name, String email, String area, String address, String  dob, int phone, String password, List<Post> posts) {
+    public UserRegistrationDto(int id, String name, String email, String area, String address, String  dob, int phone, String password) {
         this.id = id;
         this.name = name;
         this.email = email;
@@ -39,10 +27,9 @@ public class UserRegistrationForm {
         this.dob = dob;
         this.phone = phone;
         this.password = password;
-        this.posts = posts;
     }
 
-    public UserRegistrationForm(String name, String email, String area, String address, String  dob, int phone, String password) {
+    public UserRegistrationDto(String name, String email, String area, String address, String  dob, int phone, String password) {
         this.name = name;
         this.email = email;
         this.area = area;
@@ -116,14 +103,6 @@ public class UserRegistrationForm {
         this.password = password;
     }
 
-    public List<Post> getPosts() {
-        return posts;
-    }
-
-    public void setPosts(List<Post> posts) {
-        this.posts = posts;
-    }
-
     @Override
     public String toString() {
         return "UserRegistrationForm{" +
@@ -135,7 +114,6 @@ public class UserRegistrationForm {
                 ", dob=" + dob +
                 ", phone=" + phone +
                 ", password='" + password + '\'' +
-                ", posts=" + posts +
                 '}';
     }
 }

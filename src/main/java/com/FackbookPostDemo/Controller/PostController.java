@@ -6,7 +6,6 @@ import com.FackbookPostDemo.Service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -20,6 +19,7 @@ public class PostController {
     @PostMapping("/savePost/{id}")
     public Post savePost(@PathVariable int id, @RequestBody Post post) {
         post.setUser(userRepository.findById(id).get());
+
         return postService.savePost(post);
     }
 

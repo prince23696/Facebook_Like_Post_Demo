@@ -1,10 +1,14 @@
 package com.FackbookPostDemo.Service;
 
 import com.FackbookPostDemo.Entity.UserRegistrationForm;
+import com.FackbookPostDemo.dto.UserRegistrationDto;
+import org.springframework.security.core.userdetails.UserDetailsService;
 
 import java.util.List;
 
-public interface UserService {
+public interface UserService extends UserDetailsService {
+
+    public UserRegistrationForm save(UserRegistrationDto registrationDto);
 
     public UserRegistrationForm saveUser(UserRegistrationForm userRegistrationForm);
 
